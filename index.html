@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AeroSwift – Book Your Flight Easily</title>
+  <title>AeroSwift - Book Your Flight Easily</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -14,11 +14,20 @@
         <div class="brand-icon">✈</div>
         AeroSwift
       </a>
+
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
       <ul class="navbar-links">
         <li><a href="index.html" class="active">Home</a></li>
         <li><a href="flight.html">Flights</a></li>
         <li><a href="history.html">History</a></li>
       </ul>
+
     </div>
   </nav>
 
@@ -74,7 +83,7 @@
         <div class="destinations-grid">
 
           <div class="destination-card">
-            <img src="/pic/bali.jpg?w=600" alt="Paris" />
+            <img src="pic/bali.jpg?w=600" alt="Paris" />
             <div class="destination-card-body">
               <h3>Bali</h3>
               <p> Kuta</p>
@@ -86,7 +95,7 @@
           </div>
 
           <div class="destination-card">
-            <img src="/pic/raja-ampat.jpg?w=600" alt="Tokyo" />
+            <img src="pic/raja-ampat.jpg?w=600" alt="Tokyo" />
             <div class="destination-card-body">
               <h3>Papua Barat</h3>  
               <p>Raja Ampat</p>
@@ -98,7 +107,7 @@
           </div>
 
           <div class="destination-card">
-            <img src="/pic/borobudur.jpg?w=600" alt="Dubai" />
+            <img src="pic/borobudur.jpg?w=600" alt="Dubai" />
             <div class="destination-card-body">
               <h3>Jawa Tengah</h3>
               <p>Borobudur</p>
@@ -118,7 +127,7 @@
 
         <div class="travel-video">
           <video autoplay muted loop playsinline>
-            <source src="vid/cinematic.mp4" type="video/mp4">
+            <source src="vid/cinematic.webm" type="video/webm">
           </video>
         </div>
 
@@ -192,5 +201,7 @@
     </div>
   </footer>
 
+
+<script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AeroSwift – Available Flights</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="navbar-brand">
+        <div class="brand-icon">✈</div>
+        AeroSwift
+      </a>
+      <ul class="navbar-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="flight.html" class="active">Flights</a></li>
+        <li><a href="history.html">History</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="page-header">
+    <div class="container">
+      <h1>Available Flights</h1>
+      <p>Medan, Kualanamu (KNO) → Bali, Denpasar (DPO) &nbsp;·&nbsp; 1 Passenger</p>
+    </div>
+  </div>
+
+  <main>
+    <section class="page-section">
+      <div class="container">
+        <div class="results-layout">
+
+          <!-- FILTERS -->
+          <aside class="filters-panel">
+            <h3>⚙ Filters</h3>
+
+            <div class="filter-group">
+              <label>Price Range</label>
+              <input type="range" min="1" max="10" value="8" step="1"  class="filter-range" />
+              <div class="range-labels"><span>Rp0</span><span>Rp5.000.0000</span></div>
+            </div>
+
+            <div class="filter-group">
+              <label>Airline</label>
+              <select class="form-select">
+                <option>All Airlines</option>
+                <option>Garuda Airlines</option>
+                <option>Lion Air Airlines</option>
+                <option>Batik Airlines</option>
+                <option>Citilink Airlines</option>
+              </select>
+            </div>
+
+            <div class="filter-group">
+              <label>Departure Time</label>
+              <select class="form-select">
+                <option>Any Time</option>
+                <option>Morning (6AM – 12PM)</option>
+                <option>Afternoon (12PM – 6PM)</option>
+                <option>Evening (6PM – 12AM)</option>
+              </select>
+            </div>
+
+          </aside>
+
+          <!-- FLIGHT RESULTS -->
+          <div class="flights-list">
+
+            <!-- Flight 1 -->
+            <div class="flight-card">
+              <div class="flight-card-left">
+                <div class="airline-logo">🛫</div>
+                <div class="flight-info">
+                  <div class="airline-name">Batik Airlines</div>
+                  <div class="flight-times">
+                    <div class="time-block">
+                      <div class="time-big">08:00</div>
+                      <div class="time-sub">KNO</div>
+                    </div>
+                    <div class="flight-route-line">
+                      <div class="route-label">3h 30m</div>
+                      <div class="route-track"></div>
+                      <div class="route-label">Non-stop</div>
+                    </div>
+                    <div class="time-block">
+                      <div class="time-big">11:30</div>
+                      <div class="time-sub">DPO</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="flight-card-right">
+                <div class="flight-price">Rp 2.600.000</div>
+                <a href="booking.html" class="btn btn-primary">Select Flight</a>
+              </div>
+            </div>
+
+            <!-- Flight 2 -->
+            <div class="flight-card-sold">
+              <div class="flight-card-left">
+                <div class="airline-logo">✈️</div>
+                <div class="flight-info">
+                  <div class="airline-name">LionAir Airlines</div>
+                  <div class="flight-times">
+                    <div class="time-block">
+                      <div class="time-big">10:15</div>
+                      <div class="time-sub">KNO</div>
+                    </div>
+                    <div class="flight-route-line">
+                      <div class="route-label">2h 50m</div>
+                      <div class="route-track"></div>
+                      <div class="route-label">Non-stop</div>
+                    </div>
+                    <div class="time-block">
+                      <div class="time-big">12:55</div>
+                      <div class="time-sub">CGK</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="flight-card-right">
+                <div class="flight-price">Rp 1.700.000</div>
+                <a href="booking.html" class="btn btn-primary">Select Flight</a>
+              </div>
+            </div>
+
+            <!-- Flight 3 -->
+            <div class="flight-card-sold">
+              <div class="flight-card-left">
+                <div class="airline-logo">🛬</div>
+                <div class="flight-info">
+                  <div class="airline-name">Citilink Airlines</div>
+                  <div class="flight-times">
+                    <div class="time-block">
+                      <div class="time-big">12:30</div>
+                      <div class="time-sub">DPO</div>
+                    </div>
+                    <div class="flight-route-line">
+                      <div class="route-label">2h 30m</div>
+                      <div class="route-track"></div>
+                      <div class="route-label">Non-stop</div>
+                    </div>
+                    <div class="time-block">
+                      <div class="time-big">15:00</div>
+                      <div class="time-sub">CGK</div>
+                    </div> 
+                  </div>
+                </div>
+              </div>
+              <div class="flight-card-right">
+                <div class="flight-price">Rp 1.900.000</div>
+                <a href="booking.html" class="btn btn-primary">Select Flight</a>
+              </div>
+            </div>
+
+            <!-- Flight 4 -->
+            <div class="flight-card-sold">
+              <div class="flight-card-left">
+                <div class="airline-logo">✈️</div>
+                <div class="flight-info">
+                  <div class="airline-name">LionAir Airlines</div>
+                  <div class="flight-times">
+                    <div class="time-block">
+                      <div class="time-big">14:45</div>
+                      <div class="time-sub">YIA</div>
+                    </div>
+                    <div class="flight-route-line">
+                      <div class="route-label">3h 45m</div>
+                      <div class="route-track"></div>
+                      <div class="route-label">1 Stop</div>
+                    </div>
+                    <div class="time-block">
+                      <div class="time-big">18:30</div>
+                      <div class="time-sub">TKG</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="flight-card-right">
+                <div class="flight-price">Rp 875.000</div>
+                <a href="booking.html" class="btn btn-primary">Select Flight</a>
+              </div>
+            </div>
+
+            <!-- Flight 5 -->
+            <div class="flight-card-sold">
+              <div class="flight-card-left">
+                <div class="airline-logo">🛫</div>
+                <div class="flight-info">
+                  <div class="airline-name">Garuda Airlines</div>
+                  <div class="flight-times">
+                    <div class="time-block">
+                      <div class="time-big">16:00</div>
+                      <div class="time-sub">CGK</div>
+                    </div>
+                    <div class="flight-route-line">
+                      <div class="route-label">1h 30m</div>
+                      <div class="route-track"></div>
+                      <div class="route-label">Non-stop</div>
+                    </div>
+                    <div class="time-block">
+                      <div class="time-big">17:30</div>
+                      <div class="time-sub">BPN</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="flight-card-right">
+                <div class="flight-price">Rp 1.375.000</div>
+                <a href="booking.html" class="btn btn-primary">Select Flight</a>
+              </div>
+            </div>
+
+            <!-- Flight 6 -->
+            <div class="flight-card-sold">
+              <div class="flight-card-left">
+                <div class="airline-logo">✈️</div>
+                <div class="flight-info">
+                  <div class="airline-name">Garuda Airlines</div>
+                  <div class="flight-times">
+                    <div class="time-block">
+                      <div class="time-big">18:15</div>
+                      <div class="time-sub">BPN</div>
+                    </div>
+                    <div class="flight-route-line">
+                      <div class="route-label">3h 30m</div>
+                      <div class="route-track"></div>
+                      <div class="route-label">Non-stop</div>
+                    </div>
+                    <div class="time-block">
+                      <div class="time-big">21:45</div>
+                      <div class="time-sub">DPO</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="flight-card-right">
+                <div class="flight-price">Rp 3.750.000</div>
+                <a href="booking.html" class="btn btn-primary">Select Flight</a>
+              </div>
+            </div>
+
+          </div><!-- /.flights-list -->
+        </div><!-- /.results-layout -->
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>About AeroSwift</h4>
+          <p>Connecting travelers to destinations nationwide with reliable, comfortable, and accessible local flights.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Terms &amp; Conditions</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact Us</h4>
+          <div class="footer-contact-item">📧 support@AeroSwift.com</div>
+          <div class="footer-contact-item">📞 +62 812 8302 7623</div>
+          <div class="footer-contact-item">📍 Medan Amplas,  20147</div>
+        </div>
+        <div class="footer-col">
+          <h4>Follow Us</h4>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/">f</a>
+            <a href="https://x.com/">t</a>
+            <a href="https://linkedin.com/">in</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">&copy; 2026 AeroSwift. All rights reserved.</div>
+    </div>
+  </footer>
+
+</body>
+</html>

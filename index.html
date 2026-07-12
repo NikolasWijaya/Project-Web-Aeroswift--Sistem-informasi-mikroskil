@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AeroSwift – Book Your Flight Easily</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="navbar-brand">
+        <div class="brand-icon">✈</div>
+        AeroSwift
+      </a>
+      <ul class="navbar-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="flight.html">Flights</a></li>
+        <li><a href="history.html">History</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+
+    <section class="hero">
+      <div class="container hero-content">
+        <h1>Book Your Flight Easily</h1>
+        <p>Explore Indonesia with affordable and convenient domestic flights.</p>
+
+        <div class="search-form-card">
+          <form action="flight.html" method="get">
+            <div class="search-grid">
+              <div class="form-group">
+                <label class="form-label" for="from">📍 Departure City</label>
+                <input type="text" id="from" name="from" class="form-input" placeholder="Medan, Kualanamu (KNO)" />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="to">📍 Destination City</label>
+                <input type="text" id="to" name="to" class="form-input" placeholder="Bali, Denpasar (DPO)" />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="departDate">📅 Departure Date</label>
+                <input type="date" id="departDate" name="departDate" class="form-input" />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="returnDate">📅 Return Date (Optional)</label>
+                <input type="date" id="returnDate" name="returnDate" class="form-input" />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="passengers">👥 Passengers</label>
+                <select id="passengers" name="passengers" class="form-select">
+                  <option value="1">1 Passengger</option>
+                  <option value="2">2 Passengers</option>
+                  <option value="3">3 Passengers</option>
+                  <option value="4">4 Passengers</option>
+                  <option value="5">5 Passengers</option>
+                  <option value="6">6 Passengers</option>
+                  <option value="7">7 Passengers</option>
+                  <option value="8">8 Passengers</option>
+                </select>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full btn-lg">🔍 &nbsp;Search Flight</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="container">
+        <h2 class="section-title">Top Destinations in Indonesia</h2>
+        <div class="destinations-grid">
+
+          <div class="destination-card">
+            <img src="/pic/bali.jpg?w=600" alt="Paris" />
+            <div class="destination-card-body">
+              <h3>Bali</h3>
+              <p> Kuta</p>
+              <div class="destination-card-footer">
+                <span class="price-tag">Recommended</span>
+                <a href="flight.html" class="btn btn-primary">Book Now</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="destination-card">
+            <img src="/pic/raja-ampat.jpg?w=600" alt="Tokyo" />
+            <div class="destination-card-body">
+              <h3>Papua Barat</h3>  
+              <p>Raja Ampat</p>
+              <div class="destination-card-footer">
+                <span class="price-tag">Best Seller</span>
+                <a href="flight.html" class="btn btn-primary">Book Now</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="destination-card">
+            <img src="/pic/borobudur.jpg?w=600" alt="Dubai" />
+            <div class="destination-card-body">
+              <h3>Jawa Tengah</h3>
+              <p>Borobudur</p>
+              <div class="destination-card-footer">
+                <span class="price-tag">Trending</span>
+                <a href="flight.html" class="btn btn-primary">Book Now</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="travel-video-section">
+      <div class="container travel-video-wrapper">
+
+        <div class="travel-video">
+          <video autoplay muted loop playsinline>
+            <source src="vid/cinematic.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <div class="travel-content">
+
+          <h2>Discover The Beauty Of Indonesia From The Sky</h2>
+
+          <p>
+            Discover the beauty of Indonesia through seamless travel experiences.
+            From the beaches of Bali to the streets of Jakarta and the culture of Yogyakarta,
+            AeroSwift helps you reach your favorite destinations with comfort, convenience,
+            and affordable flights.
+          </p>
+
+          <div class="travel-features">
+            <div class="travel-feature">
+              ✈ Fast & Easy Booking
+            </div>
+
+            <div class="travel-feature">
+              🌍 Popular Destinations
+            </div>
+
+            <div class="travel-feature">
+              💺 Comfortable Flights
+            </div>
+          </div>
+
+          <a href="flight.html" class="btn btn-primary">
+            Explore Flights
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>About AeroSwift</h4>
+          <p>Connecting travelers to destinations nationwide with reliable, comfortable, and accessible local flights.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Terms &amp; Conditions</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact Us</h4>
+          <div class="footer-contact-item">📧 support@AeroSwift.com</div>
+          <div class="footer-contact-item">📞 +62 812 8302 7623</div>
+          <div class="footer-contact-item">📍 Medan Amplas,  20147</div>
+        </div>
+        <div class="footer-col">
+          <h4>Follow Us</h4>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/">f</a>
+            <a href="https://x.com/">t</a>
+            <a href="https://linkedin.com/">in</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">&copy; 2026 AeroSwift. All rights reserved.</div>
+    </div>
+  </footer>
+
+</body>
+</html>

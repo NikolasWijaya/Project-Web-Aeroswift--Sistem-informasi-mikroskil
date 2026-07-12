@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AeroSwift – Available Flights</title>
+  <title>AeroSwift - Available Flights</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -14,6 +14,14 @@
         <div class="brand-icon">✈</div>
         AeroSwift
       </a>
+
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+      
       <ul class="navbar-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="flight.html" class="active">Flights</a></li>
@@ -95,12 +103,12 @@
               </div>
               <div class="flight-card-right">
                 <div class="flight-price">Rp 2.600.000</div>
-                <a href="booking.html" class="btn btn-primary">Select Flight</a>
+                <a href="booking.html?airline=Batik%20Airlines&amp;flightNo=BTK-238&amp;from=KNO&amp;to=DPO&amp;depart=08:00&amp;arrive=11:30&amp;price=2600000" class="btn btn-primary">Select Flight</a>
               </div>
             </div>
 
             <!-- Flight 2 -->
-            <div class="flight-card-sold">
+            <div class="flight-card">
               <div class="flight-card-left">
                 <div class="airline-logo">✈️</div>
                 <div class="flight-info">
@@ -124,12 +132,12 @@
               </div>
               <div class="flight-card-right">
                 <div class="flight-price">Rp 1.700.000</div>
-                <a href="booking.html" class="btn btn-primary">Select Flight</a>
+                <a href="booking.html?airline=LionAir%20Airlines&amp;flightNo=JT-892&amp;from=KNO&amp;to=CGK&amp;depart=10:15&amp;arrive=12:55&amp;price=1700000" class="btn btn-primary">Select Flight</a>
               </div>
             </div>
 
             <!-- Flight 3 -->
-            <div class="flight-card-sold">
+            <div class="flight-card">
               <div class="flight-card-left">
                 <div class="airline-logo">🛬</div>
                 <div class="flight-info">
@@ -153,12 +161,12 @@
               </div>
               <div class="flight-card-right">
                 <div class="flight-price">Rp 1.900.000</div>
-                <a href="booking.html" class="btn btn-primary">Select Flight</a>
+                <a href="booking.html?airline=Citilink%20Airlines&amp;flightNo=QG-560&amp;from=DPO&amp;to=CGK&amp;depart=12:30&amp;arrive=15:00&amp;price=1900000" class="btn btn-primary">Select Flight</a>
               </div>
             </div>
 
             <!-- Flight 4 -->
-            <div class="flight-card-sold">
+            <div class="flight-card">
               <div class="flight-card-left">
                 <div class="airline-logo">✈️</div>
                 <div class="flight-info">
@@ -182,7 +190,7 @@
               </div>
               <div class="flight-card-right">
                 <div class="flight-price">Rp 875.000</div>
-                <a href="booking.html" class="btn btn-primary">Select Flight</a>
+                <a href="booking.html?airline=LionAir%20Airlines&amp;flightNo=JT-345&amp;from=YIA&amp;to=TKG&amp;depart=14:45&amp;arrive=18:30&amp;price=875000" class="btn btn-primary">Select Flight</a>
               </div>
             </div>
 
@@ -285,5 +293,6 @@
     </div>
   </footer>
 
+<script src="script.js"></script>
 </body>
 </html>

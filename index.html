@@ -3,11 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AeroSwift - Book Your Flight Easily</title>
+  <title>AeroSwift – Book Your Flight Easily</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
   <nav class="navbar">
     <div class="container navbar-inner">
       <a href="index.html" class="navbar-brand">
@@ -27,7 +26,6 @@
         <li><a href="flight.html">Flights</a></li>
         <li><a href="history.html">History</a></li>
       </ul>
-
     </div>
   </nav>
 
@@ -39,36 +37,52 @@
         <p>Explore Indonesia with affordable and convenient domestic flights.</p>
 
         <div class="search-form-card">
-          <form action="flight.html" method="get">
+          <form id="searchForm" action="flight.html" method="get" novalidate>
             <div class="search-grid">
               <div class="form-group">
                 <label class="form-label" for="from">📍 Departure City</label>
-                <input type="text" id="from" name="from" class="form-input" placeholder="Medan, Kualanamu (KNO)" />
+                <select id="from" name="from" class="form-select">
+                  <option value="">Select departure city</option>
+                  <option value="KNO">Medan, Kualanamu (KNO)</option>
+                  <option value="CGK">Jakarta, Soekarno-Hatta (CGK)</option>
+                  <option value="DPO">Bali, Denpasar (DPO)</option>
+                  <option value="YIA">Yogyakarta, Kulon Progo (YIA)</option>
+                  <option value="SUB">Surabaya, Juanda (SUB)</option>
+                  <option value="BPN">Balikpapan, Sepinggan (BPN)</option>
+                  <option value="SOQ">Papua Barat, Sorong (SOQ)</option>
+                  <option value="TKG">Lampung, Radin Inten II (TKG)</option>
+                </select>
+                <div class="field-error" id="fromErr" role="alert"></div>
               </div>
               <div class="form-group">
                 <label class="form-label" for="to">📍 Destination City</label>
-                <input type="text" id="to" name="to" class="form-input" placeholder="Bali, Denpasar (DPO)" />
+                <select id="to" name="to" class="form-select">
+                  <option value="">Select destination city</option>
+                  <option value="KNO">Medan, Kualanamu (KNO)</option>
+                  <option value="CGK">Jakarta, Soekarno-Hatta (CGK)</option>
+                  <option value="DPO">Bali, Denpasar (DPO)</option>
+                  <option value="YIA">Yogyakarta, Kulon Progo (YIA)</option>
+                  <option value="SUB">Surabaya, Juanda (SUB)</option>
+                  <option value="BPN">Balikpapan, Sepinggan (BPN)</option>
+                  <option value="SOQ">Papua Barat, Sorong (SOQ)</option>
+                  <option value="TKG">Lampung, Radin Inten II (TKG)</option>
+                </select>
+                <div class="field-error" id="toErr" role="alert"></div>
               </div>
               <div class="form-group">
                 <label class="form-label" for="departDate">📅 Departure Date</label>
                 <input type="date" id="departDate" name="departDate" class="form-input" />
+                <div class="field-error" id="departDateErr" role="alert"></div>
               </div>
               <div class="form-group">
                 <label class="form-label" for="returnDate">📅 Return Date (Optional)</label>
                 <input type="date" id="returnDate" name="returnDate" class="form-input" />
+                <div class="field-error" id="returnDateErr" role="alert"></div>
               </div>
               <div class="form-group">
-                <label class="form-label" for="passengers">👥 Passengers</label>
-                <select id="passengers" name="passengers" class="form-select">
-                  <option value="1">1 Passengger</option>
-                  <option value="2">2 Passengers</option>
-                  <option value="3">3 Passengers</option>
-                  <option value="4">4 Passengers</option>
-                  <option value="5">5 Passengers</option>
-                  <option value="6">6 Passengers</option>
-                  <option value="7">7 Passengers</option>
-                  <option value="8">8 Passengers</option>
-                </select>
+                <label class="form-label" for="passengers">👥 Passengers (1–9)</label>
+                <input type="number" id="passengers" name="passengers" class="form-input" value="1" inputmode="numeric" step="1" />
+                <div class="field-error" id="passengersErr" role="alert"></div>
               </div>
             </div>
             <button type="submit" class="btn btn-primary btn-full btn-lg">🔍 &nbsp;Search Flight</button>
@@ -83,37 +97,46 @@
         <div class="destinations-grid">
 
           <div class="destination-card">
-            <img src="pic/bali.jpg?w=600" alt="Paris" />
+            <picture>
+              <source type="image/webp" srcset="pic/bali-600.webp 600w, pic/bali-1200.webp 1200w" sizes="(max-width: 700px) 100vw, 360px" />
+              <img src="pic/bali-600.webp" alt="Beach and temple in Bali" width="600" height="400" loading="lazy" decoding="async" />
+            </picture>
             <div class="destination-card-body">
               <h3>Bali</h3>
-              <p> Kuta</p>
+              <p>Kuta</p>
               <div class="destination-card-footer">
                 <span class="price-tag">Recommended</span>
-                <a href="flight.html" class="btn btn-primary">Book Now</a>
+                <a href="flight.html?to=DPO" class="btn btn-primary">Book Now</a>
               </div>
             </div>
           </div>
 
           <div class="destination-card">
-            <img src="pic/raja-ampat.jpg?w=600" alt="Tokyo" />
+            <picture>
+              <source type="image/webp" srcset="pic/raja-ampat-600.webp 600w, pic/raja-ampat-1200.webp 1200w" sizes="(max-width: 700px) 100vw, 360px" />
+              <img src="pic/raja-ampat-600.webp" alt="Islands of Raja Ampat" width="600" height="394" loading="lazy" decoding="async" />
+            </picture>
             <div class="destination-card-body">
-              <h3>Papua Barat</h3>  
+              <h3>Papua Barat</h3>
               <p>Raja Ampat</p>
               <div class="destination-card-footer">
                 <span class="price-tag">Best Seller</span>
-                <a href="flight.html" class="btn btn-primary">Book Now</a>
+                <a href="flight.html?to=SOQ" class="btn btn-primary">Book Now</a>
               </div>
             </div>
           </div>
 
           <div class="destination-card">
-            <img src="pic/borobudur.jpg?w=600" alt="Dubai" />
+            <picture>
+              <source type="image/webp" srcset="pic/borobudur-600.webp 600w, pic/borobudur-1200.webp 1200w" sizes="(max-width: 700px) 100vw, 360px" />
+              <img src="pic/borobudur-600.webp" alt="Borobudur Temple" width="600" height="400" loading="lazy" decoding="async" />
+            </picture>
             <div class="destination-card-body">
               <h3>Jawa Tengah</h3>
               <p>Borobudur</p>
               <div class="destination-card-footer">
                 <span class="price-tag">Trending</span>
-                <a href="flight.html" class="btn btn-primary">Book Now</a>
+                <a href="flight.html?to=YIA" class="btn btn-primary">Book Now</a>
               </div>
             </div>
           </div>
@@ -126,7 +149,7 @@
       <div class="container travel-video-wrapper">
 
         <div class="travel-video">
-          <video autoplay muted loop playsinline>
+          <video autoplay muted loop playsinline preload="none" poster="vid/poster.jpg">
             <source src="vid/cinematic.webm" type="video/webm">
           </video>
         </div>
@@ -143,22 +166,12 @@
           </p>
 
           <div class="travel-features">
-            <div class="travel-feature">
-              ✈ Fast & Easy Booking
-            </div>
-
-            <div class="travel-feature">
-              🌍 Popular Destinations
-            </div>
-
-            <div class="travel-feature">
-              💺 Comfortable Flights
-            </div>
+            <div class="travel-feature">✈ Fast &amp; Easy Booking</div>
+            <div class="travel-feature">🌍 Popular Destinations</div>
+            <div class="travel-feature">💺 Comfortable Flights</div>
           </div>
 
-          <a href="flight.html" class="btn btn-primary">
-            Explore Flights
-          </a>
+          <a href="flight.html" class="btn btn-primary">Explore Flights</a>
         </div>
 
       </div>
@@ -200,8 +213,8 @@
       <div class="footer-bottom">&copy; 2026 AeroSwift. All rights reserved.</div>
     </div>
   </footer>
-
-
+<script src="data.js"></script>
+<script src="auth.js"></script>
 <script src="script.js"></script>
 </body>
 </html>

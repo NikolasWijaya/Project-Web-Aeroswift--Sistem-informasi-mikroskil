@@ -5,15 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AeroSwift – Available Flights</title>
   <link rel="stylesheet" href="style.css" />
+  <script src="data.js"></script>
+  <script src="auth.js"></script>
+  <script>Auth.requireLogin();</script>
 </head>
 <body>
-
   <nav class="navbar">
     <div class="container navbar-inner">
       <a href="index.html" class="navbar-brand">
         <div class="brand-icon">✈</div>
         AeroSwift
       </a>
+
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
       <ul class="navbar-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="flight.html" class="active">Flights</a></li>
@@ -25,232 +35,127 @@
   <div class="page-header">
     <div class="container">
       <h1>Available Flights</h1>
-      <p>Medan, Kualanamu (KNO) → Bali, Denpasar (DPO) &nbsp;·&nbsp; 1 Passenger</p>
+      <p id="flightSubtitle">Search for a route to see the available flights</p>
     </div>
   </div>
 
   <main>
     <section class="page-section">
       <div class="container">
-        <div class="results-layout">
+
+        <div class="search-form-card search-form-compact">
+          <form id="searchForm" action="flight.html" method="get" novalidate>
+            <div class="search-grid">
+              <div class="form-group">
+                <label class="form-label" for="from">📍 Departure City</label>
+                <select id="from" name="from" class="form-select">
+                  <option value="">Select departure city</option>
+                  <option value="KNO">Medan, Kualanamu (KNO)</option>
+                  <option value="CGK">Jakarta, Soekarno-Hatta (CGK)</option>
+                  <option value="DPO">Bali, Denpasar (DPO)</option>
+                  <option value="YIA">Yogyakarta, Kulon Progo (YIA)</option>
+                  <option value="SUB">Surabaya, Juanda (SUB)</option>
+                  <option value="BPN">Balikpapan, Sepinggan (BPN)</option>
+                  <option value="SOQ">Papua Barat, Sorong (SOQ)</option>
+                  <option value="TKG">Lampung, Radin Inten II (TKG)</option>
+                </select>
+                <div class="field-error" id="fromErr" role="alert"></div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="to">📍 Destination City</label>
+                <select id="to" name="to" class="form-select">
+                  <option value="">Select destination city</option>
+                  <option value="KNO">Medan, Kualanamu (KNO)</option>
+                  <option value="CGK">Jakarta, Soekarno-Hatta (CGK)</option>
+                  <option value="DPO">Bali, Denpasar (DPO)</option>
+                  <option value="YIA">Yogyakarta, Kulon Progo (YIA)</option>
+                  <option value="SUB">Surabaya, Juanda (SUB)</option>
+                  <option value="BPN">Balikpapan, Sepinggan (BPN)</option>
+                  <option value="SOQ">Papua Barat, Sorong (SOQ)</option>
+                  <option value="TKG">Lampung, Radin Inten II (TKG)</option>
+                </select>
+                <div class="field-error" id="toErr" role="alert"></div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="departDate">📅 Departure Date</label>
+                <input type="date" id="departDate" name="departDate" class="form-input" />
+                <div class="field-error" id="departDateErr" role="alert"></div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="returnDate">📅 Return Date (Optional)</label>
+                <input type="date" id="returnDate" name="returnDate" class="form-input" />
+                <div class="field-error" id="returnDateErr" role="alert"></div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="passengers">👥 Passengers (1–9)</label>
+                <input type="number" id="passengers" name="passengers" class="form-input" value="1" inputmode="numeric" step="1" />
+                <div class="field-error" id="passengersErr" role="alert"></div>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full btn-lg">🔍 &nbsp;Search Flight</button>
+          </form>
+        </div>
+
+        <div class="results-layout" id="resultsLayout" hidden>
 
           <!-- FILTERS -->
           <aside class="filters-panel">
             <h3>⚙ Filters</h3>
 
             <div class="filter-group">
-              <label>Price Range</label>
-              <input type="range" min="1" max="10" value="8" step="1"  class="filter-range" />
-              <div class="range-labels"><span>Rp0</span><span>Rp5.000.0000</span></div>
+              <label for="fPrice">Maximum Price: <span id="fPriceLabel">Rp 0</span></label>
+              <input type="range" id="fPrice" class="filter-range" min="0" max="0" step="50000" value="0" />
+              <div class="range-labels"><span id="fPriceMin">Rp 0</span><span id="fPriceMax">Rp 0</span></div>
             </div>
 
             <div class="filter-group">
-              <label>Airline</label>
-              <select class="form-select">
-                <option>All Airlines</option>
-                <option>Garuda Airlines</option>
-                <option>Lion Air Airlines</option>
-                <option>Batik Airlines</option>
-                <option>Citilink Airlines</option>
+              <label for="fAirline">Airline</label>
+              <select id="fAirline" class="form-select">
+                <option value="all">All Airlines</option>
               </select>
             </div>
 
             <div class="filter-group">
-              <label>Departure Time</label>
-              <select class="form-select">
-                <option>Any Time</option>
-                <option>Morning (6AM – 12PM)</option>
-                <option>Afternoon (12PM – 6PM)</option>
-                <option>Evening (6PM – 12AM)</option>
+              <label for="fTime">Departure Time</label>
+              <select id="fTime" class="form-select">
+                <option value="any">Any Time</option>
+                <option value="night">Night (12AM – 6AM)</option>
+                <option value="morning">Morning (6AM – 12PM)</option>
+                <option value="afternoon">Afternoon (12PM – 6PM)</option>
+                <option value="evening">Evening (6PM – 12AM)</option>
               </select>
             </div>
 
+            <div class="filter-group">
+              <label for="fSort">Sort By</label>
+              <select id="fSort" class="form-select">
+                <option value="price">Lowest price</option>
+                <option value="depart">Earliest departure</option>
+              </select>
+            </div>
+
+            <button type="button" class="btn btn-outline btn-full" id="fReset">Reset Filters</button>
           </aside>
 
           <!-- FLIGHT RESULTS -->
-          <div class="flights-list">
+          <div class="flights-list-wrap">
+            <div class="results-count" id="resultsCount" role="status" aria-live="polite"></div>
+            <div class="flights-list" id="flightsList"></div>
+          </div>
 
-            <!-- Flight 1 -->
-            <div class="flight-card">
-              <div class="flight-card-left">
-                <div class="airline-logo">🛫</div>
-                <div class="flight-info">
-                  <div class="airline-name">Batik Airlines</div>
-                  <div class="flight-times">
-                    <div class="time-block">
-                      <div class="time-big">08:00</div>
-                      <div class="time-sub">KNO</div>
-                    </div>
-                    <div class="flight-route-line">
-                      <div class="route-label">3h 30m</div>
-                      <div class="route-track"></div>
-                      <div class="route-label">Non-stop</div>
-                    </div>
-                    <div class="time-block">
-                      <div class="time-big">11:30</div>
-                      <div class="time-sub">DPO</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="flight-card-right">
-                <div class="flight-price">Rp 2.600.000</div>
-                <a href="booking.html" class="btn btn-primary">Select Flight</a>
-              </div>
-            </div>
+        </div>
 
-            <!-- Flight 2 -->
-            <div class="flight-card-sold">
-              <div class="flight-card-left">
-                <div class="airline-logo">✈️</div>
-                <div class="flight-info">
-                  <div class="airline-name">LionAir Airlines</div>
-                  <div class="flight-times">
-                    <div class="time-block">
-                      <div class="time-big">10:15</div>
-                      <div class="time-sub">KNO</div>
-                    </div>
-                    <div class="flight-route-line">
-                      <div class="route-label">2h 50m</div>
-                      <div class="route-track"></div>
-                      <div class="route-label">Non-stop</div>
-                    </div>
-                    <div class="time-block">
-                      <div class="time-big">12:55</div>
-                      <div class="time-sub">CGK</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="flight-card-right">
-                <div class="flight-price">Rp 1.700.000</div>
-                <a href="booking.html" class="btn btn-primary">Select Flight</a>
-              </div>
-            </div>
+        <div class="empty-state" id="flightEmpty">
+          <div class="empty-icon">🛫</div>
+          <h2>Where would you like to go?</h2>
+          <p>Choose a departure city, destination and date above to see flights.</p>
+        </div>
 
-            <!-- Flight 3 -->
-            <div class="flight-card-sold">
-              <div class="flight-card-left">
-                <div class="airline-logo">🛬</div>
-                <div class="flight-info">
-                  <div class="airline-name">Citilink Airlines</div>
-                  <div class="flight-times">
-                    <div class="time-block">
-                      <div class="time-big">12:30</div>
-                      <div class="time-sub">DPO</div>
-                    </div>
-                    <div class="flight-route-line">
-                      <div class="route-label">2h 30m</div>
-                      <div class="route-track"></div>
-                      <div class="route-label">Non-stop</div>
-                    </div>
-                    <div class="time-block">
-                      <div class="time-big">15:00</div>
-                      <div class="time-sub">CGK</div>
-                    </div> 
-                  </div>
-                </div>
-              </div>
-              <div class="flight-card-right">
-                <div class="flight-price">Rp 1.900.000</div>
-                <a href="booking.html" class="btn btn-primary">Select Flight</a>
-              </div>
-            </div>
-
-            <!-- Flight 4 -->
-            <div class="flight-card-sold">
-              <div class="flight-card-left">
-                <div class="airline-logo">✈️</div>
-                <div class="flight-info">
-                  <div class="airline-name">LionAir Airlines</div>
-                  <div class="flight-times">
-                    <div class="time-block">
-                      <div class="time-big">14:45</div>
-                      <div class="time-sub">YIA</div>
-                    </div>
-                    <div class="flight-route-line">
-                      <div class="route-label">3h 45m</div>
-                      <div class="route-track"></div>
-                      <div class="route-label">1 Stop</div>
-                    </div>
-                    <div class="time-block">
-                      <div class="time-big">18:30</div>
-                      <div class="time-sub">TKG</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="flight-card-right">
-                <div class="flight-price">Rp 875.000</div>
-                <a href="booking.html" class="btn btn-primary">Select Flight</a>
-              </div>
-            </div>
-
-            <!-- Flight 5 -->
-            <div class="flight-card-sold">
-              <div class="flight-card-left">
-                <div class="airline-logo">🛫</div>
-                <div class="flight-info">
-                  <div class="airline-name">Garuda Airlines</div>
-                  <div class="flight-times">
-                    <div class="time-block">
-                      <div class="time-big">16:00</div>
-                      <div class="time-sub">CGK</div>
-                    </div>
-                    <div class="flight-route-line">
-                      <div class="route-label">1h 30m</div>
-                      <div class="route-track"></div>
-                      <div class="route-label">Non-stop</div>
-                    </div>
-                    <div class="time-block">
-                      <div class="time-big">17:30</div>
-                      <div class="time-sub">BPN</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="flight-card-right">
-                <div class="flight-price">Rp 1.375.000</div>
-                <a href="booking.html" class="btn btn-primary">Select Flight</a>
-              </div>
-            </div>
-
-            <!-- Flight 6 -->
-            <div class="flight-card-sold">
-              <div class="flight-card-left">
-                <div class="airline-logo">✈️</div>
-                <div class="flight-info">
-                  <div class="airline-name">Garuda Airlines</div>
-                  <div class="flight-times">
-                    <div class="time-block">
-                      <div class="time-big">18:15</div>
-                      <div class="time-sub">BPN</div>
-                    </div>
-                    <div class="flight-route-line">
-                      <div class="route-label">3h 30m</div>
-                      <div class="route-track"></div>
-                      <div class="route-label">Non-stop</div>
-                    </div>
-                    <div class="time-block">
-                      <div class="time-big">21:45</div>
-                      <div class="time-sub">DPO</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="flight-card-right">
-                <div class="flight-price">Rp 3.750.000</div>
-                <a href="booking.html" class="btn btn-primary">Select Flight</a>
-              </div>
-            </div>
-
-          </div><!-- /.flights-list -->
-        </div><!-- /.results-layout -->
       </div>
     </section>
   </main>
 
-  <footer>
+  <footer id="contact">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-col">
@@ -284,6 +189,6 @@
       <div class="footer-bottom">&copy; 2026 AeroSwift. All rights reserved.</div>
     </div>
   </footer>
-
+<script src="script.js"></script>
 </body>
 </html>

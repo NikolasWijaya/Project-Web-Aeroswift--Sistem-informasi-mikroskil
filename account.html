@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AeroSwift – Login &amp; Register</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="navbar-brand">
+        <div class="brand-icon">✈</div>
+        AeroSwift
+      </a>
+
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+      <ul class="navbar-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="flight.html">Flights</a></li>
+        <li><a href="history.html">History</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="page-header">
+    <div class="container">
+      <h1>Your AeroSwift Account</h1>
+      <p>Log in or create an account to search, book and track your flights</p>
+    </div>
+  </div>
+
+  <main>
+    <section class="page-section">
+      <div class="container">
+        <div class="auth-wrap">
+
+          <div id="authNotice" class="alert alert-info" role="status" hidden></div>
+
+          <div class="card auth-card">
+            <div class="card-body">
+
+              <div class="auth-tabs" role="tablist">
+                <button type="button" class="auth-tab active" id="tabLogin" role="tab" aria-selected="true">Login</button>
+                <button type="button" class="auth-tab" id="tabRegister" role="tab" aria-selected="false">Register</button>
+              </div>
+
+              <!-- LOGIN -->
+              <form id="loginForm" class="auth-panel" role="tabpanel" aria-labelledby="tabLogin" novalidate autocomplete="on">
+                <div id="loginAlert" class="alert alert-danger" role="alert" hidden></div>
+                <div class="form-group">
+                  <label class="form-label" for="loginEmail">📧 Email Address</label>
+                  <input type="email" id="loginEmail" name="email" class="form-input" placeholder="example@gmail.com" autocomplete="username" />
+                  <div class="field-error" id="loginEmailErr" role="alert"></div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="loginPassword">🔒 Password</label>
+                  <div class="password-field">
+                    <input type="password" id="loginPassword" name="password" class="form-input" placeholder="Your password" autocomplete="current-password" />
+                    <button type="button" class="toggle-pw" data-target="loginPassword" aria-label="Show password">Show</button>
+                  </div>
+                  <div class="field-error" id="loginPasswordErr" role="alert"></div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full btn-lg" id="loginBtn">Login</button>
+                <p class="auth-switch">Don't have an account? <a href="#" data-switch="register">Register here</a></p>
+              </form>
+
+              <!-- REGISTER -->
+              <form id="registerForm" class="auth-panel" role="tabpanel" aria-labelledby="tabRegister" novalidate hidden autocomplete="on">
+                <div id="registerAlert" class="alert alert-danger" role="alert" hidden></div>
+                <div class="form-group">
+                  <label class="form-label" for="regName">👤 Full Name</label>
+                  <input type="text" id="regName" name="name" class="form-input" placeholder="Name" autocomplete="name" />
+                  <div class="field-error" id="regNameErr" role="alert"></div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="regEmail">📧 Email Address</label>
+                  <input type="email" id="regEmail" name="email" class="form-input" placeholder="example@gmail.com" autocomplete="email" />
+                  <div class="field-error" id="regEmailErr" role="alert"></div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="regPassword">🔒 Password</label>
+                  <div class="password-field">
+                    <input type="password" id="regPassword" name="password" class="form-input" placeholder="At least 8 characters, letters and numbers" autocomplete="new-password" />
+                    <button type="button" class="toggle-pw" data-target="regPassword" aria-label="Show password">Show</button>
+                  </div>
+                  <div class="strength"><div class="strength-bar" id="strengthBar"></div></div>
+                  <div class="strength-text" id="strengthText">Password strength</div>
+                  <div class="field-error" id="regPasswordErr" role="alert"></div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="regConfirm">🔒 Confirm Password</label>
+                  <input type="password" id="regConfirm" name="confirm" class="form-input" placeholder="Repeat your password" autocomplete="new-password" />
+                  <div class="field-error" id="regConfirmErr" role="alert"></div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full btn-lg" id="registerBtn">Create Account</button>
+                <p class="auth-switch">Already registered? <a href="#" data-switch="login">Login here</a></p>
+              </form>
+
+            </div>
+          </div>
+
+          <p class="auth-hint">🔐 Your password is stored only as a salted hash, never as plain text.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>About AeroSwift</h4>
+          <p>Connecting travelers to destinations nationwide with reliable, comfortable, and accessible local flights.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Terms &amp; Conditions</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact Us</h4>
+          <div class="footer-contact-item">📧 support@AeroSwift.com</div>
+          <div class="footer-contact-item">📞 +62 812 8302 7623</div>
+          <div class="footer-contact-item">📍 Medan Amplas,  20147</div>
+        </div>
+        <div class="footer-col">
+          <h4>Follow Us</h4>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/">f</a>
+            <a href="https://x.com/">t</a>
+            <a href="https://linkedin.com/">in</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">&copy; 2026 AeroSwift. All rights reserved.</div>
+    </div>
+  </footer>
+
+<script src="data.js"></script>
+<script src="auth.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1138,7 +1138,10 @@ footer {
    TICKET CONFIRMATION MODAL (boarding-pass style)
    ========================================================== */
 
-
+/* Full-screen backdrop — flex centers the ticket card on all
+   screen sizes. overflow-y lives here (not on the card) so the
+   perforation notches below are still free to poke past the
+   card's edges instead of being clipped. */
 .ticket-overlay{
     display: none;
 
@@ -1287,7 +1290,8 @@ footer {
     gap: .3rem;
 }
 
-
+/* Perforation — dashed tear-line with die-cut circles that use
+   the same color as the overlay so they read as cut-outs */
 .ticket-perforation{
     position: relative;
     border-top: 2px dashed var(--border);
@@ -1369,7 +1373,8 @@ footer {
 }
 
 /* ==========================================================
-   BOOKING DETAIL MODAL
+   BOOKING DETAIL MODAL (history page — clean table view)
+   Reuses .ticket-overlay for the centered, full-screen backdrop.
    ========================================================== */
 .detail-modal-card{
     width: 100%;
@@ -1463,3 +1468,132 @@ footer {
     .detail-table th,
     .detail-table td{ font-size: .85rem; }
 }
+
+/* ==========================================================
+   ADDITIONS – account, validation, filters, seats, payment
+   ========================================================== */
+[hidden] { display: none !important; }
+.muted-text { color: var(--text-muted); font-size: .85rem; }
+
+/* validation */
+.field-error { color: var(--danger); font-size: .82rem; font-weight: 500; min-height: 0; }
+.field-error:empty { display: none; }
+.form-input.invalid, .form-select.invalid { border-color: var(--danger); background: var(--danger-bg); }
+.form-input.invalid:focus, .form-select.invalid:focus { box-shadow: 0 0 0 3px rgba(220,38,38,.15); }
+
+.alert { padding: .85rem 1.1rem; border-radius: var(--radius); font-size: .92rem; font-weight: 500; margin-bottom: 1.1rem; border: 1px solid transparent; }
+.alert-danger  { background: var(--danger-bg);  color: #991B1B; border-color: #FECACA; }
+.alert-success { background: var(--success-bg); color: #166534; border-color: #BBF7D0; }
+.alert-info    { background: #EFF6FF;           color: #1E40AF; border-color: #BFDBFE; }
+
+.btn:disabled, .btn[disabled] { opacity: .55; cursor: not-allowed; pointer-events: none; }
+.spinner { display: inline-block; width: 1em; height: 1em; border: 2px solid rgba(255,255,255,.45); border-top-color: #fff; border-radius: 50%; animation: spin .7s linear infinite; vertical-align: -2px; margin-right: .4rem; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* navbar login state */
+.nav-user { color: var(--primary); font-weight: 600; font-size: .9rem; display: flex; align-items: center; }
+.nav-user span { padding: .25rem .7rem; background: #EFF6FF; border-radius: 999px; }
+@media (max-width: 768px) { .nav-user { justify-content: center; padding: .6rem 1rem; } }
+
+/* account page */
+.auth-wrap { max-width: 460px; margin: 0 auto; }
+.auth-card .card-body { padding: 1.75rem; }
+.auth-tabs { display: flex; gap: .25rem; background: var(--bg); border-radius: var(--radius); padding: .25rem; margin-bottom: 1.5rem; }
+.auth-tab { flex: 1; padding: .65rem; border: none; border-radius: .6rem; background: transparent; font: inherit; font-weight: 600; color: var(--text-muted); cursor: pointer; transition: background .2s, color .2s; }
+.auth-tab.active { background: #fff; color: var(--primary); box-shadow: var(--shadow-sm); }
+.auth-panel { display: flex; flex-direction: column; gap: 1.1rem; }
+.auth-switch { text-align: center; font-size: .9rem; color: var(--text-muted); }
+.auth-switch a { color: var(--primary); font-weight: 600; }
+.auth-hint { text-align: center; font-size: .82rem; color: var(--text-muted); margin-top: 1rem; }
+.password-field { position: relative; }
+.password-field .form-input { padding-right: 4.5rem; }
+.toggle-pw { position: absolute; right: .5rem; top: 50%; transform: translateY(-50%); border: none; background: transparent; color: var(--primary); font: inherit; font-size: .82rem; font-weight: 600; cursor: pointer; padding: .35rem .5rem; }
+.strength { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+.strength-bar { height: 100%; width: 0; transition: width .25s, background .25s; }
+.strength-text { font-size: .78rem; color: var(--text-muted); }
+
+/* search form on the flights page */
+.search-form-compact { margin-bottom: 1.75rem; padding: 1.5rem; max-width: none; box-shadow: var(--shadow-md); }
+
+/* flight list */
+.flights-list-wrap { flex: 1; min-width: 0; }
+.results-count { font-size: .9rem; color: var(--text-muted); margin-bottom: .75rem; font-weight: 500; }
+.flight-no { font-size: .75rem; font-weight: 600; color: var(--text-muted); background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: .05rem .4rem; margin-left: .35rem; vertical-align: middle; }
+.per-pax { font-size: .75rem; font-weight: 500; color: var(--text-muted); }
+.seat-note { font-size: .78rem; color: var(--text-muted); text-align: right; }
+.seat-note.warn { color: var(--warning); font-weight: 600; }
+.flight-card-right { text-align: right; }
+.flight-card-right .btn:disabled { pointer-events: auto; }
+.flights-list .empty-state { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow-md); }
+.range-labels { gap: .5rem; }
+
+/* booking – passengers */
+.pax-card { border: 1.5px solid var(--border); border-radius: var(--radius); padding: 1rem 1.1rem 1.1rem; margin-bottom: 1rem; background: #FCFDFF; }
+.pax-card:last-child { margin-bottom: 0; }
+.pax-title { font-size: .95rem; font-weight: 700; margin-bottom: .75rem; color: var(--primary-dark); }
+
+/* booking – seat map */
+.seat-tabs { display: flex; flex-wrap: wrap; gap: .5rem; margin: .75rem 0 1rem; }
+.seat-tab { border: 1.5px solid var(--border); background: #fff; border-radius: 999px; padding: .4rem .9rem; font: inherit; font-size: .85rem; font-weight: 600; color: var(--text-muted); cursor: pointer; }
+.seat-tab.active { border-color: var(--primary); color: var(--primary); background: #EFF6FF; }
+.seat-legend { display: flex; flex-wrap: wrap; gap: 1rem; font-size: .8rem; color: var(--text-muted); margin-bottom: .75rem; }
+.seat-legend span { display: inline-flex; align-items: center; gap: .35rem; }
+.seat-sample { width: 16px; height: 16px; border-radius: 4px; border: 1.5px solid #9CA3AF; background: #fff; display: inline-block; }
+.seat-sample.selected { background: var(--primary); border-color: var(--primary); }
+.seat-sample.taken { background: #D1D5DB; border-color: #D1D5DB; }
+.seat-map { display: inline-block; background: #F8FAFC; border: 1.5px solid var(--border); border-radius: 1.5rem 1.5rem .75rem .75rem; padding: 1rem 1.25rem; max-width: 100%; overflow-x: auto; }
+.seat-row { display: flex; align-items: center; justify-content: center; gap: .35rem; margin-bottom: .35rem; }
+.row-no { width: 1.4rem; text-align: center; font-size: .72rem; color: var(--text-muted); font-weight: 600; }
+.aisle { width: 1.4rem; flex-shrink: 0; }
+.seat-col { width: 34px; text-align: center; font-size: .72rem; font-weight: 700; color: var(--text-muted); }
+.seat { width: 34px; height: 34px; border-radius: .5rem; border: 1.5px solid #9CA3AF; background: #fff; font: inherit; font-size: .78rem; font-weight: 700; color: #fff; cursor: pointer; padding: 0; transition: transform .1s, border-color .15s; }
+.seat:hover:not(:disabled) { border-color: var(--primary); transform: scale(1.08); }
+.seat.taken { background: #D1D5DB; border-color: #D1D5DB; cursor: not-allowed; }
+.seat.selected { background: var(--primary); border-color: var(--primary); }
+.seat.mine { background: #93C5FD; border-color: #93C5FD; color: #1E3A8A; }
+.seat:focus-visible { outline: 3px solid rgba(37,99,235,.4); outline-offset: 2px; }
+
+/* ticket extras */
+.ticket-success { background: var(--success-bg); color: #166534; font-weight: 600; font-size: .85rem; padding: .55rem .8rem; border-radius: .6rem; margin-bottom: 1rem; text-align: center; }
+.ticket-card-line { text-align: center; font-size: .75rem; color: var(--text-muted); margin-top: .6rem; }
+.ticket-actions { flex-wrap: wrap; }
+.ticket-actions .btn { flex: 1 1 auto; text-align: center; }
+
+/* small screens */
+@media (max-width: 480px) {
+  .seat { width: 30px; height: 30px; }
+  .seat-col { width: 30px; }
+  .seat-map { padding: .75rem .6rem; }
+  .search-form-compact { padding: 1.1rem; }
+  .auth-card .card-body { padding: 1.25rem; }
+  .flight-card-right { align-items: stretch; flex-wrap: wrap; gap: .5rem; }
+}
+
+/* printing the boarding pass */
+@media print {
+  body * { visibility: hidden !important; }
+  #ticketModal, #ticketModal * { visibility: visible !important; }
+  #ticketModal { position: absolute; inset: 0; background: #fff; backdrop-filter: none; display: block !important; }
+  #ticketModal .ticket-actions { display: none !important; }
+  #ticketModal .ticket-card { box-shadow: none; border: 1px solid #ccc; }
+}
+
+/* layout overflow fixes on narrow screens */
+.booking-layout > div { min-width: 0; }
+.flight-card-left, .flight-info { min-width: 0; }
+@media (max-width: 768px) {
+  .results-layout { align-items: stretch; }
+  .flights-list-wrap { width: 100%; }
+  .flight-card-left { flex-wrap: wrap; }
+  .flight-card-right { align-items: flex-end; }
+}
+.flight-card-sold .flight-card-right { padding-top: 1.6rem; }
+
+/* dashboard summary */
+.summary-tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1rem; }
+.stat-tile { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow-md); padding: 1.1rem 1.25rem; }
+.stat-label { font-size: .82rem; color: var(--text-muted); font-weight: 500; }
+.stat-value { font-size: 1.9rem; font-weight: 800; color: var(--primary); line-height: 1.2; }
+.next-trip { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow-md); border-left: 4px solid var(--primary); padding: 1.1rem 1.25rem; }
+.next-trip-route { font-size: 1.25rem; font-weight: 800; }
+@media (max-width: 600px) { .summary-tiles { grid-template-columns: 1fr; } }
